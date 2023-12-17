@@ -1,5 +1,5 @@
 <template>
-  <div id="loadingCountdown">
+  <div id="loadingCountdown" v-if="isVisible">
     <div id="loadingSanta">
       <img src="../assets/loading/santa-claus.png" alt="" />
     </div>
@@ -44,8 +44,10 @@ export default {
     return {
       now: Math.trunc(new Date().getTime() / 1000),
       event: this.date,
+      eventDate: null,
       finish: false,
       buttonText: "",
+      isVisible: true
     };
   },
   mounted() {
@@ -60,19 +62,20 @@ export default {
   },
   computed: {
     buttonStyle() {
-      const isDatePassed = this.event - this.now;
+      const isDatePassed = this.eventDate - this.now < 0;
 
-      if (isDatePassed) {
+      if (!isDatePassed) {
         this.buttonText = "Coming Soon!"    
         this.waitForIt = "I told you to wait!!!"    
       } else {
         this.buttonText = "It is time!"
         this.waitForIt = "Let's go!"
       }
+      
       return {
         // Add conditional styles based on the date
-        'background-color': isDatePassed ? 'gray' : 'green',
-        'color': isDatePassed ? 'black' : 'white',
+        'background-color': !isDatePassed ? 'gray' : 'green',
+        'color': !isDatePassed ? 'black' : 'white',
         // Add more styles as needed
       };
     },
@@ -80,6 +83,7 @@ export default {
       return this.calculatedDate - this.now;
     },
     calculatedDate() {
+      this.eventDate = Math.trunc(Date.parse(this.event) / 1000);
       return Math.trunc(Date.parse(this.event) / 1000);
     },
     seconds() {
@@ -102,10 +106,11 @@ export default {
   methods: {
     // Check if it is time
     isItTime() {
-      if (this.event>this.now) {
-        alert("It is not time yet!!")
+      if (this.eventDate - this.now > 0) {
+        alert("It is not time yet !!")
       } else {
-
+        this.isVisible = !this.isVisible;
+        this.$emit('startGift', this.isVisible);
       }
     },
     twoDigits(value) {
@@ -193,7 +198,6 @@ img {
 }
  
 .btn-start {
-  background: green;
   font-weight: bold;
 }
 </style>

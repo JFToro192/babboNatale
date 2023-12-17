@@ -1,9 +1,9 @@
 <template>
   <div id="appMain">
-    <LoadingXmas/>
+    <LoadingXmas @startGift="handleEvent()"/>
     <!-- <LoadingYear/>
-    <NewYear/>
-    <SelectPath/> -->
+    <NewYear/>-->
+    <SelectPath v-if="isVisiblePath"/>
     <Particles
         id="tsparticles"
         :particlesInit="particlesInit"
@@ -160,11 +160,26 @@
     </div>
 </template>
 
+<script>
+export default{
+  data() {
+    return {
+      isVisiblePath: false
+    };
+  },
+  methods:{
+    handleEvent(data) {
+      // Handle the emitted data in the parent component
+      this.isVisiblePath = !data;
+    },
+  }
+};
+</script>
+
+
 <script setup>
 import LoadingXmas from "./components/loadingXmas.vue"
-// import LoadingYear from "./components/loadingYear.vue"
-// import NewYear from "./components/newYear.vue"
-// import SelectPath from "./components/selectPath.vue"
+import SelectPath from "./components/selectPath.vue"
 import { loadFull } from "tsparticles";
 
 const particlesInit = async (engine) => {
