@@ -123,42 +123,41 @@ img {
 
 /* Countdown */
 .countdown {
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-    &__block {
-        text-align: center;
-        padding: 0px 15px;
-        position: relative;
-        &:first-child {
-        padding-left: 0;
-        .countdown__digit {
-            &:before {
-            display: none;
-            }
-        }
-        }
-        &:last-child {
-        padding-right: 0;
-        }
-    }
-    &__text {
-        display: inline-block;
-        text-transform: uppercase;
-        margin-bottom: 5px;
-    }
-    &__digit {
-        font-size: 300%;
-        font-weight: bold;
-        line-height: 1;
-        margin-bottom: 5px;
-        &:before {
-        content: ":";
-        position: absolute;
-        left: -5px;
-        }
-    }
+margin: 20px;
+display: flex;
+justify-content: center;
 }
+.countdown__block {
+text-align: center;
+padding: 0px 15px;
+position: relative;
+}
+.countdown__block:first-child {
+padding-left: 0;
+}
+.countdown__block:first-child .countdown__digit:before {
+display: none;
+}
+.countdown__block:last-child {
+padding-right: 0;
+}
+.countdown__text {
+display: inline-block;
+text-transform: uppercase;
+margin-bottom: 5px;
+}
+.countdown__digit {
+font-size: 300%;
+font-weight: bold;
+line-height: 1;
+margin-bottom: 5px;
+}
+.countdown__digit:before {
+content: ":";
+position: absolute;
+left: -5px;
+}
+ 
 
 .btn-start{
     background: green;
