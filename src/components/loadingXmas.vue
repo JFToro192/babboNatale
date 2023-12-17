@@ -157,7 +157,7 @@ img {
   position: absolute;
   left: -5px;
 }
-
+ 
 .btn-start {
   background: green;
   color: white;

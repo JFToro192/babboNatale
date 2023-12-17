@@ -4,7 +4,7 @@
         <code>
             <div>
                 <p class="typingEffect">
-                    Load... wait for it... ing
+                    Load... wait for it... ing Test
                 </p>
             </div>
         </code>
