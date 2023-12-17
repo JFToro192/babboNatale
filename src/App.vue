@@ -1,8 +1,9 @@
 <template>
-  <div id="app">
-    <LoadingYear/>
+  <div id="appMain">
+    <LoadingXmas/>
+    <!-- <LoadingYear/>
     <NewYear/>
-    <SelectPath/>
+    <SelectPath/> -->
     <Particles
         id="tsparticles"
         :particlesInit="particlesInit"
@@ -160,9 +161,10 @@
 </template>
 
 <script setup>
-import LoadingYear from "./components/loadingYear.vue"
-import NewYear from "./components/newYear.vue"
-import SelectPath from "./components/selectPath.vue"
+import LoadingXmas from "./components/loadingXmas.vue"
+// import LoadingYear from "./components/loadingYear.vue"
+// import NewYear from "./components/newYear.vue"
+// import SelectPath from "./components/selectPath.vue"
 import { loadFull } from "tsparticles";
 
 const particlesInit = async (engine) => {
@@ -175,13 +177,13 @@ const particlesLoaded = async (container) => {
 </script>
 
 <style scoped>
-*{
-  margin: 0!important;
-  padding: 0!important;
-}
-#app{
-  width: 100vw;
-}
+
+#appMain{
+  height: calc( 100vh - 20px );
+  width: calc( 100vw - 20px );
+  max-width: 980px;
+  margin: 10px;
+}   
 
 
 </style>
