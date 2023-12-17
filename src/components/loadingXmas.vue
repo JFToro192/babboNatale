@@ -88,7 +88,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 div {
   border-radius: 8px;
 }
