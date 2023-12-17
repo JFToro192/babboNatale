@@ -96,7 +96,7 @@ div {
 #loadingCountdown {
   position: absolute;
   width: 100%;
-  height: calc( 100h - 20px );
+  height: calc(100h - 20px);
   max-width: 300px;
   top: 50%;
   left: 50%;
@@ -117,51 +117,50 @@ img {
   height: 100%;
 }
 
-.title-random{
-    padding: 5px;
+.title-random {
+  padding: 5px;
 }
 
 /* Countdown */
 .countdown {
-margin: 20px;
-display: flex;
-justify-content: center;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
 }
 .countdown__block {
-text-align: center;
-padding: 0px 15px;
-position: relative;
+  text-align: center;
+  padding: 0px 15px;
+  position: relative;
 }
 .countdown__block:first-child {
-padding-left: 0;
+  padding-left: 0;
 }
 .countdown__block:first-child .countdown__digit:before {
-display: none;
+  display: none;
 }
 .countdown__block:last-child {
-padding-right: 0;
+  padding-right: 0;
 }
 .countdown__text {
-display: inline-block;
-text-transform: uppercase;
-margin-bottom: 5px;
+  display: inline-block;
+  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 .countdown__digit {
-font-size: 300%;
-font-weight: bold;
-line-height: 1;
-margin-bottom: 5px;
+  font-size: 300%;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 5px;
 }
 .countdown__digit:before {
-content: ":";
-position: absolute;
-left: -5px;
+  content: ":";
+  position: absolute;
+  left: -5px;
 }
- 
 
-.btn-start{
-    background: green;
-    color: white;
-    font-weight: bold;
+.btn-start {
+  background: green;
+  color: white;
+  font-weight: bold;
 }
 </style>
