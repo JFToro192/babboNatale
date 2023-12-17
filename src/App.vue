@@ -197,7 +197,7 @@ const particlesLoaded = async (container) => {
   height: calc( 100% - 20px )!important;
   width: calc( 100% - 20px )!important;
   overflow: hidden!important;
-  max-width: 980px;
+  max-width: 360px;
   max-height: calc( 100% - 20px );
   margin: 10px;
 }   

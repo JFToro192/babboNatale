@@ -1,10 +1,10 @@
 <template>
     <div id="selectPath">
-        <div v-if="isVisibleDescription" style="padding-bottom:16px; font-size:20px;">
+        <div v-if="isVisibleDescription" style="padding-bottom:16px; font-size:20px; color:white;">
             You may be wondering about the dolls that you found inside of the pack (at least, I hope ahah) ... Here, I'll propose a couple of alternatives. The original, and the twisted one, you'll get to know which is which after your pick 😂
         </div>
         <div class="option peaceful-option" v-if="isVisiblePeace">
-            <button class="btn-peaceful-option" @click="setVisiblePeace()" v-if="isVisiblePeaceBtn">
+            <button class="btn-peaceful-option" @click="setVisiblePeace()" v-if="isVisiblePeaceBtn" style="color: white;background:black;">
                 Peaceful way! 😴
                 <img class="img-peaceful-option" src="../assets/options/donald.gif" alt="">
             </button>   
@@ -43,7 +43,7 @@
             </Flicking>     
         </div>
         <div class="option chaos-option" v-if="isVisibleChaos">
-            <button class="btn-chaos-option" @click="setVisibleChaos" v-if="isVisibleChaosBtn">
+            <button class="btn-chaos-option" @click="setVisibleChaos" v-if="isVisibleChaosBtn" style="color: white;background:black;">
                 Peace was never an option! 🔥
                 <img class="img-chaos-option" src="../assets/options/elmo.gif" alt="">
             </button>
