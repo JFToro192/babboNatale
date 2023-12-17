@@ -179,9 +179,11 @@ const particlesLoaded = async (container) => {
 <style scoped>
 
 #appMain{
-  height: calc( 100vh - 20px );
-  width: calc( 100vw - 20px );
+  height: calc( 100% - 20px )!important;
+  width: calc( 100% - 20px )!important;
+  overflow: hidden!important;
   max-width: 980px;
+  max-height: calc( 100% - 20px );
   margin: 10px;
 }   
 

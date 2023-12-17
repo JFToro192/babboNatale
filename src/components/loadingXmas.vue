@@ -4,11 +4,11 @@
       <img src="../assets/loading/santa-claus.png" alt="" />
     </div>
     <div id="loadingTimer">
-      <h3 class="title-random">I told you to wait!!!</h3>
+      <h3 class="title-random">{{ waitForIt }}</h3>
       <div class="countdown">
         <div v-if="days" class="countdown__block">
           <div class="countdown__digit">{{ days || twoDigits }}</div>
-          <div class="countdown__text">Días</div>
+          <div class="countdown__text">Days</div>
         </div>
         <div class="countdown__block">
           <div class="countdown__digit">{{ hours || twoDigits }}</div>
@@ -23,10 +23,10 @@
           <div class="countdown__text">Seg</div>
         </div>
       </div>
-      <button class="btn-start disabled" 
+      <button class="btn-start" 
               @click="isItTime()"
               :style="buttonStyle">
-        Coming soon!
+        {{ buttonText }}
       </button>
     </div>
   </div>
@@ -45,6 +45,7 @@ export default {
       now: Math.trunc(new Date().getTime() / 1000),
       event: this.date,
       finish: false,
+      buttonText: "",
     };
   },
   mounted() {
@@ -59,12 +60,19 @@ export default {
   },
   computed: {
     buttonStyle() {
-      const isDatePassed = this.event > this.now;
+      const isDatePassed = this.event - this.now;
 
+      if (isDatePassed) {
+        this.buttonText = "Coming Soon!"    
+        this.waitForIt = "I told you to wait!!!"    
+      } else {
+        this.buttonText = "It is time!"
+        this.waitForIt = "Let's go!"
+      }
       return {
         // Add conditional styles based on the date
         'background-color': isDatePassed ? 'gray' : 'green',
-        'color': isDatePassed ? 'black' : 'wwhite',
+        'color': isDatePassed ? 'black' : 'white',
         // Add more styles as needed
       };
     },
@@ -75,28 +83,20 @@ export default {
       return Math.trunc(Date.parse(this.event) / 1000);
     },
     seconds() {
-      if (this.secondCount < 0) return 0;
-      return this.secondCount % 60;
+      if (this.secondCount < 0 ) return this.twoDigits(0);
+      return this.twoDigits(this.secondCount % 60);
     },
     minutes() {
-      if (this.secondCount < 0) return 0;
-      return Math.trunc(this.secondCount / 60) % 60;
+      if (this.secondCount < 0 ) return this.twoDigits(0);
+      return this.twoDigits(Math.trunc(this.secondCount / 60) % 60);
     },
     hours() {
-      if (this.secondCount < 0) return 0;
-      return Math.trunc(this.secondCount / 60 / 60) % 24;
+      if (this.secondCount < 0 ) this.twoDigits(0);
+      return this.twoDigits(Math.trunc(this.secondCount / 60 / 60) % 24);
     },
     days() {
-      if (this.secondCount < 0) return 0;
+      if (this.secondCount < 0 ) return 0;
       return Math.trunc(this.secondCount / 60 / 60 / 24);
-    },
-  },
-  filters: {
-    twoDigits(value) {
-      if (value.toString().length <= 1) {
-        return "0" + value.toString();
-      }
-      return value.toString();
     },
   },
   methods: {
@@ -107,7 +107,16 @@ export default {
       } else {
 
       }
-    }    
+    },
+    twoDigits(value) {
+      if (value  > 0 ){
+        if (value.toString().length <= 1) {
+          return "0" + value.toString();
+        }
+        return value.toString();        
+      }
+      return "00".toString(); 
+    },   
   }
 
 };
@@ -184,6 +193,7 @@ img {
 }
  
 .btn-start {
+  background: green;
   font-weight: bold;
 }
 </style>
