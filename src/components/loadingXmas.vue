@@ -3,7 +3,7 @@
     <div id="loadingSanta">
       <img src="../assets/loading/santa-claus.png" alt="" />
     </div>
-    <div id="loadingTimer">
+    <div id="loadingTimer" style="color:white;">
       <h3 class="title-random">{{ waitForIt }}</h3>
       <div class="countdown">
         <div v-if="days" class="countdown__block">
