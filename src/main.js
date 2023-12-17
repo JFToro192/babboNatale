@@ -11,4 +11,3 @@ import VueCountdown from '@chenfengyuan/vue-countdown';
 
 // Create app
 createApp(App).use(Flicking).use(Particles).mount("#app");
-App.component(VueCountdown.name, VueCountdown);

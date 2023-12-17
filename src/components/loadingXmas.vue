@@ -23,7 +23,7 @@
           <div class="countdown__text">Seg</div>
         </div>
       </div>
-      <button class="btn-start">Coming soon!</button>
+      <button class="btn-start disabled" @click="isItTime()">Coming soon!</button>
     </div>
   </div>
 </template>
@@ -85,6 +85,15 @@ export default {
       return value.toString();
     },
   },
+  methods: {
+    // Check if it is time
+    isItTime() {
+      if (this.date>this.now) {
+        alert("It is not time yet!!")
+      }
+    }    
+  }
+
 };
 </script>
 
@@ -96,9 +105,9 @@ div {
 #loadingCountdown {
   position: absolute;
   width: 100%;
-  height: calc(100h - 20px);
+  height: calc( 100vh - 20px );
   max-width: 300px;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -108,7 +117,7 @@ div {
 }
 
 #loadingTimer {
-  height: 200px;
+  height: 225px;
   width: 100%;
   background: rgba(255, 0, 0, 0.5);
 }
@@ -160,6 +169,12 @@ img {
  
 .btn-start {
   background: green;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-start.disabled{
+  background: grey;
   color: white;
   font-weight: bold;
 }
